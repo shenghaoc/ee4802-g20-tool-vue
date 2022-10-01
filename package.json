@@ -10,6 +10,6 @@
     "nuxt": "3.0.0-rc.8"
   },
   "dependencies": {
-    "element-plus": "^2.2.15"
+    "element-plus": "^2.2.17"
   }
 }
