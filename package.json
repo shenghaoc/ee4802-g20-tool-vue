@@ -11,6 +11,8 @@
     "nuxt": "3.9.0"
   },
   "dependencies": {
-    "element-plus": "^2.4.4"
+    "chart.js": "^4.4.1",
+    "element-plus": "^2.4.4",
+    "vue-chartjs": "^5.3.0"
   }
 }

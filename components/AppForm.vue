@@ -39,6 +39,9 @@
       placeholder="Pick a year" 
       />
     </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">Submit</el-button>
+    </el-form-item>
   </el-form>
 </template>
 
@@ -73,4 +76,7 @@ const form = reactive({
   lease_commence_date: new Date(2022, 1)
 })
 
+const onSubmit = () => {
+  console.log('submit!')
+}
 </script>
