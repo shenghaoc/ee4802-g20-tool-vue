@@ -3,6 +3,5 @@
 <AppForm>
   This is an auto-imported component.
 </AppForm>
-<LineChart/>
 </template>
 
