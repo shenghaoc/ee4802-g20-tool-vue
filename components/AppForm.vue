@@ -1,32 +1,40 @@
 <template>
   <el-form :model="form" label-width="120px">
     <el-form-item label="ML Model">
-      <el-select-v2 v-model="form.ml_model"
-      :options="ml_model_list_lv"
-      placeholder="Please select"
-      size="large"
-      />
+      <client-only>
+        <el-select-v2 v-model="form.ml_model"
+        :options="ml_model_list_lv"
+        placeholder="Please select"
+        size="large"
+        />
+      </client-only>
     </el-form-item>
     <el-form-item label="Town">
-      <el-select-v2 v-model="form.town"
-      :options="town_list_lv"
-      placeholder="Please select"
-      size="large"
-      />
+      <client-only>
+        <el-select-v2 v-model="form.town"
+        :options="town_list_lv"
+        placeholder="Please select"
+        size="large"
+        />
+      </client-only>
     </el-form-item>
     <el-form-item label="Storey Range">
-      <el-select-v2 v-model="form.storey_range"
-      :options="storey_range_list_lv"
-      placeholder="Please select"
-      size="large"
-      />
+      <client-only>
+        <el-select-v2 v-model="form.storey_range"
+        :options="storey_range_list_lv"
+        placeholder="Please select"
+        size="large"
+        />
+      </client-only>
     </el-form-item>
     <el-form-item label="Flat Model">
-      <el-select-v2 v-model="form.flat_model"
-      :options="flat_model_list_lv"
-      placeholder="Please select"
-      size="large"
-      />
+      <client-only>
+        <el-select-v2 v-model="form.flat_model"
+        :options="flat_model_list_lv"
+        placeholder="Please select"
+        size="large"
+        />
+      </client-only>
     </el-form-item>
     <el-form-item label="Floor Area">
       <el-input-number v-model="form.floor_area_sqm"
@@ -34,10 +42,12 @@
       />
     </el-form-item>
     <el-form-item label="Lease Commence Date">
-      <el-date-picker v-model="form.lease_commence_date"
-      type="year"
-      placeholder="Pick a year"
-      />
+      <client-only>
+        <el-date-picker v-model="form.lease_commence_date"
+        type="year"
+        placeholder="Pick a year"
+        />
+      </client-only>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">Submit</el-button>
