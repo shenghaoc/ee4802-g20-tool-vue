@@ -95,12 +95,12 @@ let chartData = {
 
 // do not use same name with ref
 const form = reactive({
-  ml_model: '',
-  town: '',
-  storey_range: '',
-  flat_model: '',
+  ml_model: 'Support Vector Regression',
+  town: 'ANG MO KIO',
+  storey_range: '01 TO 03',
+  flat_model: '2-room',
   floor_area_sqm: 1,
-  lease_commence_date: new Date(2022, 1)
+  lease_commence_date: curr.toDate()
 })
 
 const onSubmit = () => {
