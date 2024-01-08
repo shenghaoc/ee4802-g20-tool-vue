@@ -7,12 +7,11 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.7",
     "nuxt": "3.9.0"
   },
   "dependencies": {
     "chart.js": "^4.4.1",
-    "element-plus": "^2.4.4",
+    "tdesign-vue-next": "^1.7.2",
     "vue-chartjs": "^5.3.0"
   }
 }

@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
     css: [
-        'element-plus/dist/index.css'
+        'tdesign-vue-next/es/style/index.css'
       ],
-    modules: ['@element-plus/nuxt'],
+    modules: ['tdesign-vue-next/es/nuxt'],
 })

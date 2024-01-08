@@ -1,58 +1,58 @@
 <template>
-  <el-form :model="form" label-width="120px">
-    <el-form-item label="ML Model">
+  <t-form :model="form" labt-width="120px">
+    <t-form-item label="ML Model">
       <client-only>
-        <el-select-v2 v-model="form.ml_model"
+        <t-select v-model="form.ml_model"
         :options="ml_model_list_lv"
         placeholder="Please select"
         size="large"
         />
       </client-only>
-    </el-form-item>
-    <el-form-item label="Town">
+    </t-form-item>
+    <t-form-item label="Town">
       <client-only>
-        <el-select-v2 v-model="form.town"
+        <t-select v-model="form.town"
         :options="town_list_lv"
         placeholder="Please select"
         size="large"
         />
       </client-only>
-    </el-form-item>
-    <el-form-item label="Storey Range">
+    </t-form-item>
+    <t-form-item label="Storey Range">
       <client-only>
-        <el-select-v2 v-model="form.storey_range"
+        <t-select v-model="form.storey_range"
         :options="storey_range_list_lv"
         placeholder="Please select"
         size="large"
         />
       </client-only>
-    </el-form-item>
-    <el-form-item label="Flat Model">
+    </t-form-item>
+    <t-form-item label="Flat Model">
       <client-only>
-        <el-select-v2 v-model="form.flat_model"
+        <t-select v-model="form.flat_model"
         :options="flat_model_list_lv"
         placeholder="Please select"
         size="large"
         />
       </client-only>
-    </el-form-item>
-    <el-form-item label="Floor Area">
-      <el-input-number v-model="form.floor_area_sqm"
+    </t-form-item>
+    <t-form-item label="Floor Area">
+      <t-input-number v-model="form.floor_area_sqm"
       :min="1"
       />
-    </el-form-item>
-    <el-form-item label="Lease Commence Date">
+    </t-form-item>
+    <t-form-item label="Lease Commence Date">
       <client-only>
-        <el-date-picker v-model="form.lease_commence_date"
-        type="year"
+        <t-date-picker v-model="form.lease_commence_date"
+        mode="year"
         placeholder="Pick a year"
         />
       </client-only>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit">Submit</el-button>
-    </el-form-item>
-  </el-form>
+    </t-form-item>
+    <t-form-item>
+      <t-button theme="primary" @click="onSubmit">Submit</t-button>
+    </t-form-item>
+  </t-form>
   <LineChart :chartData="chartData" :key="output" />
 </template>
 
@@ -60,12 +60,13 @@
 import { ref, reactive } from 'vue'
 
 import {
-  ElSelectV2,
-  ElInputNumber,
-  ElDatePicker,
-  ElForm,
-  ElFormItem,
-} from "element-plus";
+  Button as TButton,
+  DatePicker as TDatePicker,
+  Select as TSelect,
+  InputNumber as TInputNumber,
+  Form as TForm,
+  FormItem as TFormItem
+} from "tdesign-vue-next";
 
 import { ml_model_list } from '~/assets/lists';
 import { town_list } from '~/assets/lists';
