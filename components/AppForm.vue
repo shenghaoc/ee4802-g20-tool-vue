@@ -1,4 +1,9 @@
 <template>
+  <t-head-menu>
+    <template #logo>
+      <h1>Price Prediction</h1>
+    </template>
+  </t-head-menu>
   <t-form :model="form" labt-width="120px">
     <t-form-item label="ML Model">
       <client-only>
@@ -65,7 +70,8 @@ import {
   Select as TSelect,
   InputNumber as TInputNumber,
   Form as TForm,
-  FormItem as TFormItem
+  FormItem as TFormItem,
+  HeadMenu as THeadMenu
 } from "tdesign-vue-next";
 
 import { ml_model_list } from '~/assets/lists';
