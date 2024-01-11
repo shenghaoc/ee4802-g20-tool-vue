@@ -51,6 +51,10 @@
         <t-date-picker v-model="form.lease_commence_date"
         mode="year"
         placeholder="Pick a year"
+        :disable-date="{
+          before: dayjs.utc('1960-01', 'YYYY-MM').format(),
+          after: dayjs.utc('2022-02', 'YYYY-MM').format()
+        }"
         />
       </client-only>
     </t-form-item>
