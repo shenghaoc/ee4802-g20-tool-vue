@@ -1,6 +1,3 @@
 <template>
-<AppForm>
-  This is an auto-imported component.
-</AppForm>
+	<AppForm> This is an auto-imported component. </AppForm>
 </template>
-
