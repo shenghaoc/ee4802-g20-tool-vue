@@ -58,6 +58,7 @@
       <t-button theme="primary" @click="onSubmit">Submit</t-button>
     </t-form-item>
   </t-form>
+  <t-statistic title="Prediction" :value=output prefix="$" />
   <LineChart :chartData="chartData" :key="output" />
 </template>
 
@@ -71,7 +72,8 @@ import {
   InputNumber as TInputNumber,
   Form as TForm,
   FormItem as TFormItem,
-  HeadMenu as THeadMenu
+  HeadMenu as THeadMenu,
+  Statistic as TStatistic
 } from "tdesign-vue-next";
 
 import { ml_model_list } from '~/assets/lists';
