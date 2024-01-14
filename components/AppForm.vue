@@ -133,20 +133,20 @@ const form = reactive({
 });
 
 const onSubmit = () => {
+	const formData = new FormData();
+	formData.append("ml_model", form.ml_model);
+	formData.append("month_start", curr.subtract(12, 'month').format('YYYY-MM'));
+	formData.append("month_end", curr.format('YYYY-MM'));
+	formData.append("town", form.town);
+	formData.append("storey_range", form.storey_range);
+	formData.append("flat_model", form.flat_model);
+	formData.append("floor_area_sqm", form.floor_area_sqm.toString());
+	formData.append("lease_commence_date", dayjs(form.lease_commence_date).year().toString());
 	const res = fetch(
-		'https://ee4802-g20-tool.schoenherrchen.workers.dev/api/prices?' +
-			new URLSearchParams({
-				ml_model: form.ml_model,
-				month_start: curr.subtract(12, 'month').format('YYYY-MM'),
-				month_end: curr.format('YYYY-MM'),
-				town: form.town,
-				storey_range: form.storey_range,
-				flat_model: form.flat_model,
-				floor_area_sqm: form.floor_area_sqm.toString(),
-				lease_commence_date: dayjs(form.lease_commence_date).year().toString()
-			}),
+		'https://ee4802-g20-tool.shenghaoc.workers.dev/api/prices',
 		{
-			method: 'GET' // *GET, POST, PUT, DELETE, etc.
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			body: formData
 		}
 	);
 	res.then((response) =>
