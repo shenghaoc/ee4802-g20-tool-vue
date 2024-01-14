@@ -1,71 +1,68 @@
 <template>
-	<t-head-menu>
-		<template #logo>
-			<h1>Price Prediction</h1>
-		</template>
-	</t-head-menu>
-	<t-form :model="form" labt-width="120px">
-		<t-form-item label="ML Model">
+	<client-only>
+		<el-menu class="el-menu" mode="horizontal">
+			<el-menu-item index="1">Prediction Tool</el-menu-item>
+		</el-menu>
+	</client-only>
+	<el-form :model="form" label-width="120px">
+		<el-form-item label="ML Model">
 			<client-only>
-				<t-select
+				<el-select-v2
 					v-model="form.ml_model"
 					:options="ml_model_list_lv"
 					placeholder="Please select"
 					size="large"
 				/>
 			</client-only>
-		</t-form-item>
-		<t-form-item label="Town">
+		</el-form-item>
+		<el-form-item label="Town">
 			<client-only>
-				<t-select
+				<el-select-v2
 					v-model="form.town"
 					:options="town_list_lv"
 					placeholder="Please select"
 					size="large"
 				/>
 			</client-only>
-		</t-form-item>
-		<t-form-item label="Storey Range">
+		</el-form-item>
+		<el-form-item label="Storey Range">
 			<client-only>
-				<t-select
+				<el-select-v2
 					v-model="form.storey_range"
 					:options="storey_range_list_lv"
 					placeholder="Please select"
 					size="large"
 				/>
 			</client-only>
-		</t-form-item>
-		<t-form-item label="Flat Model">
+		</el-form-item>
+		<el-form-item label="Flat Model">
 			<client-only>
-				<t-select
+				<el-select-v2
 					v-model="form.flat_model"
 					:options="flat_model_list_lv"
 					placeholder="Please select"
 					size="large"
 				/>
 			</client-only>
-		</t-form-item>
-		<t-form-item label="Floor Area">
-			<t-input-number v-model="form.floor_area_sqm" :min="1" />
-		</t-form-item>
-		<t-form-item label="Lease Commence Date">
+		</el-form-item>
+		<el-form-item label="Floor Area">
+			<el-input-number v-model="form.floor_area_sqm" :min="1" />
+		</el-form-item>
+		<el-form-item label="Lease Commence Date">
 			<client-only>
-				<t-date-picker
+				<el-date-picker
 					v-model="form.lease_commence_date"
-					mode="year"
+					type="year"
 					placeholder="Pick a year"
-					:disable-date="{
-						before: dayjs.utc('1960-01', 'YYYY-MM').format(),
-						after: dayjs.utc('2022-02', 'YYYY-MM').format()
-					}"
+					:disabled-date="disabledDate"
 				/>
 			</client-only>
-		</t-form-item>
-		<t-form-item>
-			<t-button theme="primary" @click="onSubmit">Submit</t-button>
-		</t-form-item>
-	</t-form>
-	<t-statistic title="Prediction" :value="output" prefix="$" />
+		</el-form-item>
+		<el-form-item>
+			<el-button type="primary" @click="onSubmit">Submit</el-button>
+		</el-form-item>
+	</el-form>
+	<el-statistic title="Prediction" :value="output" prefix="$" />
 	<LineChart :chartData="chartData" :key="output" />
 </template>
 
@@ -73,15 +70,14 @@
 import { ref, reactive } from 'vue';
 
 import {
-	Button as TButton,
-	DatePicker as TDatePicker,
-	Select as TSelect,
-	InputNumber as TInputNumber,
-	Form as TForm,
-	FormItem as TFormItem,
-	HeadMenu as THeadMenu,
-	Statistic as TStatistic
-} from 'tdesign-vue-next';
+	ElMenu,
+	ElSelectV2,
+	ElInputNumber,
+	ElDatePicker,
+	ElForm,
+	ElFormItem,
+	ElStatistic
+} from 'element-plus';
 
 import { ml_model_list } from '~/assets/lists';
 import { town_list } from '~/assets/lists';
@@ -102,9 +98,11 @@ const flat_model_list_lv = flat_model_list.map((flat_model, _) => ({
 import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import utc from 'dayjs/plugin/utc';
+import isBetween from 'dayjs/plugin/isBetween';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(utc);
+dayjs.extend(isBetween);
 
 let curr = dayjs.utc('2022-02', 'YYYY-MM');
 let labels = [...Array(13).keys()]
@@ -167,5 +165,9 @@ const onSubmit = () => {
 			output.value = server_data[server_data.length - 1]['data'];
 		})
 	);
+};
+
+const disabledDate = (time: Date) => {
+	return !dayjs.utc(time).isBetween('1960-01-01', '2022-02-01', 'year'); // compares month and year
 };
 </script>

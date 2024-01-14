@@ -1,5 +1,8 @@
 {
 	// https://v3.nuxtjs.org/concepts/typescript
 	"extends": "./.nuxt/tsconfig.json",
-	"include": ["node_modules/tdesign-vue-next/global.d.ts"]
+	"compilerOptions": {
+		// ...
+		"types": ["element-plus/global"]
+	}
 }
