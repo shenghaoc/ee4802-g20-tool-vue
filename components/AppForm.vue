@@ -62,7 +62,7 @@
 			<el-button type="primary" @click="onSubmit">Submit</el-button>
 		</el-form-item>
 	</el-form>
-	<el-statistic title="Prediction" :value="output" prefix="$" />
+	<el-statistic title="Prediction" :value="output" prefix="$" precision="2" />
 	<LineChart :chartData="chartData" :key="output" />
 </template>
 
